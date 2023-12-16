@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 // Task 1
 //Використовуя функцію if...else,
@@ -40,23 +40,49 @@
 // const min = 7;
 // let total = 0;
 // for (let i = max; i >= min; i--) {
-    // console.log(i);
-    // if (i % 2 === 0) {
-        // total += i;
-    // }
+// console.log(i);
+// if (i % 2 === 0) {
+// total += i;
+// }
 // }
 // console.log(total);
 
+// function sumTotal(min, max) {
+//     let total = 0;
+//     for (let i = max; i >= min; i--) {
+//         console.log(i);
+//         if (i % 2 === 0) {
+//             total += i;
+//         }
+//     }
+//     return total;
+// }
+// console.log(sumTotal(5, 15));
 
-function sumTotal(min, max) {
-    let total = 0;
-    for (let i = max; i >= min; i--) {
-        console.log(i);
-        if (i % 2 === 0) {
-            total += i;
-        }
-    }
-    return total;
+// task 4
+
+// Змінна num може набувати 4 значення: 1, 2, 3 або 4. Якщо вона має
+// значення '1', то у змінну result запишемо 'зима', якщо має значення
+// '2' - 'весна' і так далі. Розв'яжіть завдання через switch-case.
+
+const num = prompt("enter number from one to four");
+let result = "";
+console.log(typeof num);
+switch (num) {
+  case "1":
+    result = "зима";
+    break;
+  case "2":
+    result = "весна";
+    break;
+  case "3":
+    result = "літо";
+    break;
+  case "4":
+    result = "осінь";
+    break;
+  default:
+    result = "enter number from one to four";
 }
-console.log(sumTotal(5, 15));
 
+console.log(result);
