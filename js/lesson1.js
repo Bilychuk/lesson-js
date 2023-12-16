@@ -65,24 +65,38 @@
 // значення '1', то у змінну result запишемо 'зима', якщо має значення
 // '2' - 'весна' і так далі. Розв'яжіть завдання через switch-case.
 
-const num = prompt("enter number from one to four");
-let result = "";
-console.log(typeof num);
-switch (num) {
-  case "1":
-    result = "зима";
-    break;
-  case "2":
-    result = "весна";
-    break;
-  case "3":
-    result = "літо";
-    break;
-  case "4":
-    result = "осінь";
-    break;
-  default:
-    result = "enter number from one to four";
+
+
+//task-5
+//
+//Напишіть код, який буде питати
+//логін за допомогою prompt и логіровати результат
+//в консоль браузера
+
+//Якщо користувач вводить "Адмін",
+//то prompt запрашує пароль.
+//Якщо ничого не ввели чи нажата клавіша Esc
+//вивести строку "Скасовано"
+//В противному випадку вивести рядок "Я вас не знаю"
+
+//Пароль перевіряти так:
+//Якщо введен пароль "Я головний",
+//то вивести рядок "Вітаю!"
+//в іншому випадку виводити рядок "Невірний пароль!"
+
+const question = prompt("введіть логін");
+console.log(question);
+if (question === "Адмін") {
+  const password = prompt("введіть пароль");
+  // if (password === "Я головний") {
+  //   alert("Вітаю!")
+  // } else {
+  //   alert("Невірний пароль!")
+  // }
+  alert(password === "Я головний" ? "Вітаю!" : "Невірний пароль!");
+} else if (question === "" || question === null) {
+  alert("Скасовано");
+} else {
+  alert("Я вас не знаю");
 }
 
-console.log(result);
