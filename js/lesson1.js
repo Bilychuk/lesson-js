@@ -84,19 +84,66 @@
 //то вивести рядок "Вітаю!"
 //в іншому випадку виводити рядок "Невірний пароль!"
 
-const question = prompt("введіть логін");
-console.log(question);
-if (question === "Адмін") {
-  const password = prompt("введіть пароль");
-  // if (password === "Я головний") {
-  //   alert("Вітаю!")
-  // } else {
-  //   alert("Невірний пароль!")
-  // }
-  alert(password === "Я головний" ? "Вітаю!" : "Невірний пароль!");
-} else if (question === "" || question === null) {
-  alert("Скасовано");
-} else {
-  alert("Я вас не знаю");
+// const question = prompt("введіть логін");
+// console.log(question);
+// if (question === "Адмін") {
+//   const password = prompt("введіть пароль");
+//   // if (password === "Я головний") {
+//   //   alert("Вітаю!")
+//   // } else {
+//   //   alert("Невірний пароль!")
+//   // }
+//   alert(password === "Я головний" ? "Вітаю!" : "Невірний пароль!");
+// } else if (question === "" || question === null) {
+//   alert("Скасовано");
+// } else {
+//   alert("Я вас не знаю");
+// }
+
+
+// task-6
+
+// В змінній minuteValue є число від 0 до 59.
+// Визначте до якої чверті години входить
+// це число(в першу, другу, треттю чи четверту).
+
+// const minuteValue = Math.floor(Math.random() * (59 - 0) + 0);
+
+// if (minuteValue >= 0 && minuteValue <= 15) {
+//   console.log(`${minuteValue} - перша чверть`);
+// } else if (minuteValue > 15 && minuteValue <= 30) {
+//   console.log(`${minuteValue} - друга чверть`);
+// } else if (minuteValue > 30 && minuteValue <= 45) {
+//   console.log(`${minuteValue} - третя чверть`)
+// } else {
+//   console.log(`${minuteValue} - четверта чверть`)
+// }
+
+// if (minuteValue <= 15) {
+//   console.log(`${minuteValue} - перша чверть`);
+// } else if (minuteValue <= 30) {
+//   console.log(`${minuteValue} - друга чверть`);
+// } else if (minuteValue <= 45) {
+//   console.log(`${minuteValue} - третя чверть`)
+// } else {
+//   console.log(`${minuteValue} - четверта чверть`)
+// }
+
+function checkValue(minuteValue) {
+  if (minuteValue <= 15) {
+  return `${minuteValue} - перша чверть`;
+  }
+
+  if (minuteValue <= 30) {
+    return `${minuteValue} - друга чверть`;
+  }
+
+  if (minuteValue <= 45) {
+    return `${minuteValue} - третя чверть`;
+  } 
+
+  return `${minuteValue} - четверта чверть`;
+
 }
 
+console.log(checkValue(36));
