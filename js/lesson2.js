@@ -92,32 +92,97 @@
 //sum() повертає сумму збереженних значень (з перевіркою на наявніст властивостей в об'єкті)
 //mult() перемножає збереженні значення і повертає результат
 
-const calculator = {
-  read(a, b) {
-    this.value1 = a;
-    this.value2 = b;
+// const calculator = {
+//   read(a, b) {
+//     this.value1 = a;
+//     this.value2 = b;
+//   },
+//   sum() {
+//     if (!this.value1 || !this.value2) {
+//       return "Values don't exist"
+//     }
+//     return this.value1 + this.value2
+//   },
+//   mult() {
+//     if (!this.value1 || !this.value2) {
+//       return "Values don't exist"
+//     }
+//     return this.value1 * this.value2
+//   }
+//   }
+
+
+// calculator.read(1, 2)
+// console.log(calculator)
+// console.log(calculator.sum())
+// console.log(calculator.mult())
+
+//6. Напишіть скрипт керування особистим кабінетом інтернет банка
+//Є об'єкт account в якому необхідно реалізувати
+//методи для работи з балансом та історією транзакцій
+
+//Типів транзакцій всього два.
+//Можна покласти або зняти гроші з рахунка
+const Transaction = {
+  DEPOSIT: "deposit",
+  WITHDRAW: "withdraw",
+};
+
+//Кожна транзакція це об'єкт з властивостями id, type, amount
+
+const account = {
+  //поточний баланс рахунка
+  balance: 0,
+
+  //Історія транзакцій
+  transactions: [],
+
+  //Метод створює і повертає об'єкт транзакцій
+  //Приймає сумму і тип транзакцій
+  createTransaction(type, amount) {
+    return {
+      type,
+      amount,
+    };
   },
-  sum() {
-    if (!this.value1 || !this.value2) {
-      return "Values don't exist"
+  //Метод відповідає за додавання сумми к балансу.
+  //Приймає сумму транзакціи.
+  //Визиває createTransaction для створення об'єкта транзакціи
+  //після чого додає його в історію транзакцій
+  deposit(amount) {
+    this.balance += amount;
+    const newTransaction = this.createTransaction(Transaction.DEPOSIT, amount);
+    // newTransaction.id = Math.random();
+    // this.transactions.push(newTransaction);
+    this.transactions.push({ ...newTransaction, id: Math.random() });
+   },
+//Метод відповідає за зняття сумми з балансу.
+  //Приймає сумму транзакціи.
+  //Визиває createTransaction для створення об'єкта транзакціи
+  //після чого додає йогого в історю транзакцій
+  //Якщо amount більше ніж поточний баланс, виводимо повідомлення про те,
+  //що недостатньо коштів на рахунку
+  withdraw(amount) {
+    if (amount > this.balance) {
+      return console.log("недостатньо коштів на рахунку");
     }
-    return this.value1 + this.value2
-  },
-  mult() {
-    if (!this.value1 || !this.value2) {
-      return "Values don't exist"
-    }
-    return this.value1 * this.value2
-  }
-  }
+    this.balance -= amount;
+    const newTransaction = this.createTransaction(Transaction.WITHDRAW, amount);
+    this.transactions.push({ ...newTransaction, id: Math.random() });
+  
+    },
+//Метод повертає поточний баланс
+  getBalance() {  },
+//Метод шукає і повертає об'єкт транзакціи по id
+  getTransactionDetails(id) {  },
+//Метод повертає кількіств коштів вказаного типу
+  //транзакціи зі всієї історії транзакцій
+  getTransactionType(type) {}
+}
 
-
-calculator.read(1, 2)
-console.log(calculator)
-console.log(calculator.sum())
-console.log(calculator.mult())
-
-
-
+account.deposit(250);
+account.deposit(450);
+account.withdraw(100);
+console.log(account);
 
 
