@@ -55,36 +55,67 @@
 //remove(name) видаляє ім'я із колекції
 //update(oldName, newName) змінює ім'я на нове
 
-const names = ["Alla", "Petro", "Max", "Olena", "Boris"];
-function add(name) {
-  if (names.includes(name)) {
-    return "такий користувач вже є"
-  }
-  names.push(name);
-  return names;
-}
-// console.log(add("Petro"));
+// const names = ["Alla", "Petro", "Max", "Olena", "Boris"];
+// function add(name) {
+//   if (names.includes(name)) {
+//     return "такий користувач вже є"
+//   }
+//   names.push(name);
+//   return names;
+// }
+// // console.log(add("Petro"));
 
-function remove(name) {
-  const index = names.indexOf(name);
-  if ( index === -1) {
-    console.log("користувач не знайдений")
-  } else {
-    names.splice(index, 1)
-     }
-  return names; 
-}
-// 
-function update(oldName, newName) {
-   const index = names.indexOf(oldName);
-  if ( index === -1) {
-    console.log("користувач не знайдений")
-  } else {
-    names.splice(index, 1, newName)
-     }
-  return names; 
+// function remove(name) {
+//   const index = names.indexOf(name);
+//   if ( index === -1) {
+//     console.log("користувач не знайдений")
+//   } else {
+//     names.splice(index, 1)
+//      }
+//   return names;
+// }
+// //
+// function update(oldName, newName) {
+//    const index = names.indexOf(oldName);
+//   if ( index === -1) {
+//     console.log("користувач не знайдений")
+//   } else {
+//     names.splice(index, 1, newName)
+//      }
+//   return names;
+//   }
+// console.log(update("FG", "Oleg"));
+
+//4. Створіть об'єкт calculator з трьомя методами
+//read(a, b) - приймає два аргумента і зберігає їх
+//як властивості об'єкта
+//sum() повертає сумму збереженних значень (з перевіркою на наявніст властивостей в об'єкті)
+//mult() перемножає збереженні значення і повертає результат
+
+const calculator = {
+  read(a, b) {
+    this.value1 = a;
+    this.value2 = b;
+  },
+  sum() {
+    if (!this.value1 || !this.value2) {
+      return "Values don't exist"
+    }
+    return this.value1 + this.value2
+  },
+  mult() {
+    if (!this.value1 || !this.value2) {
+      return "Values don't exist"
+    }
+    return this.value1 * this.value2
   }
-console.log(update("FG", "Oleg"));
+  }
+
+
+calculator.read(1, 2)
+console.log(calculator)
+console.log(calculator.sum())
+console.log(calculator.mult())
 
 
 
