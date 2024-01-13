@@ -20,7 +20,7 @@
 // якщо є - виводить повідомлення "Доступ дозволено"
 // в іншому випадку - "Користувач не знайден"
 
-const logins = ["Peter", "John", "Igor", "Sasha"];
+// const logins = ["Peter", "John", "Igor", "Sasha"];
 
 // function checkLog(arrayNew) {
 //     const login = prompt("Enter your login!");
@@ -40,10 +40,53 @@ const logins = ["Peter", "John", "Igor", "Sasha"];
 //<номер елемента> - <значення елемента>
 //Нумерація має починатись з 1
 
-function logItems(array) {
-  for (let i = 0; i < array.length; i++) {
-    console.log(`${i + 1}: ${array[i]}`);
-  }
-}
+// function logItems(array) {
+//   for (let i = 0; i < array.length; i++) {
+//     console.log(`${i + 1}: ${array[i]}`);
+//   }
+// }
 
-logItems(logins);
+// logItems(logins);
+
+
+
+//Напишіть функції для роботи з масивом
+//add(name) додає ім'я до кінця колекції
+//remove(name) видаляє ім'я із колекції
+//update(oldName, newName) змінює ім'я на нове
+
+const names = ["Alla", "Petro", "Max", "Olena", "Boris"];
+function add(name) {
+  if (names.includes(name)) {
+    return "такий користувач вже є"
+  }
+  names.push(name);
+  return names;
+}
+// console.log(add("Petro"));
+
+function remove(name) {
+  const index = names.indexOf(name);
+  if ( index === -1) {
+    console.log("користувач не знайдений")
+  } else {
+    names.splice(index, 1)
+     }
+  return names; 
+}
+// 
+function update(oldName, newName) {
+   const index = names.indexOf(oldName);
+  if ( index === -1) {
+    console.log("користувач не знайдений")
+  } else {
+    names.splice(index, 1, newName)
+     }
+  return names; 
+  }
+console.log(update("FG", "Oleg"));
+
+
+
+
+

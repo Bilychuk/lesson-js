@@ -146,4 +146,4 @@ function checkValue(minuteValue) {
 
 }
 
-console.log(checkValue(36));
+console.log(checkValue(Math.floor(Math.random() * (59 - 0) + 0)));
