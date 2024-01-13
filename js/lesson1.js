@@ -129,21 +129,26 @@
 //   console.log(`${minuteValue} - четверта чверть`)
 // }
 
-function checkValue(minuteValue) {
-  if (minuteValue <= 15) {
-  return `${minuteValue} - перша чверть`;
-  }
+// function checkValue(minuteValue) {
+//   if (minuteValue <= 15) {
+//   return `${minuteValue} - перша чверть`;
+//   }
 
-  if (minuteValue <= 30) {
-    return `${minuteValue} - друга чверть`;
-  }
+//   if (minuteValue <= 30) {
+//     return `${minuteValue} - друга чверть`;
+//   }
 
-  if (minuteValue <= 45) {
-    return `${minuteValue} - третя чверть`;
-  } 
+//   if (minuteValue <= 45) {
+//     return `${minuteValue} - третя чверть`;
+//   }
 
-  return `${minuteValue} - четверта чверть`;
+//   return `${minuteValue} - четверта чверть`;
 
-}
+// }
 
-console.log(checkValue(Math.floor(Math.random() * (59 - 0) + 0)));
+// console.log(checkValue(Math.floor(Math.random() * (59 - 0) + 0)));
+
+// task 6
+
+
+
