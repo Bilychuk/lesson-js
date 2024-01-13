@@ -168,21 +168,102 @@ const account = {
     }
     this.balance -= amount;
     const newTransaction = this.createTransaction(Transaction.WITHDRAW, amount);
-    this.transactions.push({ ...newTransaction, id: Math.random() });
+    this.transactions.push({ ...newTransaction, id: 12345 });
   
     },
 //Метод повертає поточний баланс
-  getBalance() {  },
+  getBalance() { 
+    return `На вашому балансі ${this.balance} коштів`
+   },
 //Метод шукає і повертає об'єкт транзакціи по id
-  getTransactionDetails(id) {  },
+  getTransactionDetails(id) { 
+    for (const transaction of this.transactions) {
+      if (transaction.id === id) {
+        return transaction
+      }
+    }
+    return 'Undefound'
+   },
 //Метод повертає кількіств коштів вказаного типу
   //транзакціи зі всієї історії транзакцій
-  getTransactionType(type) {}
+  getTransactionType(type) {
+    let total = 0
+    for (const transaction of this.transactions) {
+      if (transaction.type === type) {
+        total += transaction.amount
+      }
+    }
+    return total
+  }
 }
 
 account.deposit(250);
 account.deposit(450);
 account.withdraw(100);
 console.log(account);
+console.log(account.getBalance());
+console.log(account.getTransactionDetails(12345));
+console.log(account.getTransactionType(Transaction.DEPOSIT));
+
+// Home Work
 
 
+// 1. Напишіть функцію min(a, b), яка повертає
+// меньше з чисел a, b
+//Додати перевірку, що функція отримує числа
+
+// 2. Написати ф-цію, яка прибиратиме з масиву всі значення, які перетворюються на false
+// undefined, null, false, '', 0, NaN
+
+// const array = [
+//   1,
+//   0,
+//   54,
+//   "doc",
+//   null,
+//   "jpg",
+//   undefined,
+//   "",
+//   "png",
+//   "exe",
+//   false,
+//   "mp4",
+//   NaN,
+//   "hbs",
+// ];
+
+// 3. Наступна функція повертає true, якщо параметр age більше 18.
+// В іншому випадку вона запитує підтвердження через confirm і повертає його результат:
+
+// const age = prompt("Enter your age");
+
+// 4. напиши функцію яка сумуватиме сусідні числа і пушити в новий масив
+// const someArr = [22, 11, 34, 5, 12, 13, 14, 15];
+
+
+//5. Напиши скрипт, який для об'єкту user,
+//послідовно:
+//1 додасть поле mood зі значенням 'happy'
+//2 замінить hobby на 'skydiving'
+//3 замінить значення premium на false
+//4 виводить зміст об'єкта users у форматі
+//ключ:значення використовуя Object.keys() та for...of
+// const user = {
+//   name: "John",
+//   age: 20,
+//   hobby: "tenis",
+//   premium: true,
+// };
+
+
+//6. У нас є об'єкт, в якому зберігаються зарплати
+//нашої команди
+//Напишіть код для додавання усіх зарплат та
+//збережіть його результат в змінній sum.
+//Якщо об'єкт salaries пустий, то результат має бути 0
+
+// const salaries = {
+//   Mango: 100,
+//   Poly: 160,
+//   Ajax: 1470,
+// };
