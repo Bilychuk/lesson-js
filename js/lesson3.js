@@ -44,47 +44,87 @@
 //Додай методи addNote(note), removeNote(noteText)
 //updatePriority(noteText, newPriority)
 
-class Notes {
+// class Notes {
 
-  static Priority = {
-    HIGHT: "hight",
-    MIDDLE: "middle",
-    LOW: "low"
-  }
+//   static Priority = {
+//     HIGHT: "hight",
+//     MIDDLE: "middle",
+//     LOW: "low"
+//   }
 
-  constructor() {
-    this.items = []
+//   constructor() {
+//     this.items = []
+//   }
+//   addNote(note) {
+//     this.items.push(note);
+//   }
+//   removeNote(noteText) {
+//     this.items = this.items.filter(item => item.text !== noteText)
+//   }
+//   updatePriority(noteText, newPriority) {
+//     const note = this.items.find(item => item.text === noteText)
+//     if (note) {
+//       note.priority = newPriority;
+//     } else {
+//       console.log("Not found")
+//     }
+//   }
+
+// }
+
+// const notes = new Notes();
+// notes.addNote({
+//   text: "abracadabra",
+//   priority: Notes.Priority.LOW
+// })
+// notes.addNote({
+//   text: "bob",
+//   priority: Notes.Priority.HIGHT
+// })
+
+// notes.removeNote("bob")
+// notes.updatePriority("abracadabra", Notes.Priority.MIDDLE)
+// console.log(notes)
+
+
+
+// Створити список
+// Створити кнопки Add, Remove, які будуть змінювати склад списку
+// Створити input, з якого отримаємо значення, що буде передано в li
+// Парним лі вказати жовтий фон, непарним синій
+// Використовуй createElement
+
+const list = document.createElement("ol");
+const buttonAdd = document.createElement("button");
+const buttonRemove = document.createElement("button");
+const input = document.createElement("input");
+
+buttonAdd.textContent = "Add";
+buttonRemove.textContent = "Remove";
+
+document.body.append(input, buttonAdd, buttonRemove, list);
+
+buttonAdd.addEventListener("click", addItem);
+buttonRemove.addEventListener("click", removeItem);
+
+function addItem() {
+  const inputValue = input.value.trim();
+  if (inputValue === "") {
+    return;
   } 
-  addNote(note) {
-    this.items.push(note);
-  }
-  removeNote(noteText) {
-    this.items = this.items.filter(item => item.text !== noteText)
-  }
-  updatePriority(noteText, newPriority) {
-    const note = this.items.find(item => item.text === noteText)
-    if (note) {
-      note.priority = newPriority;
-    } else {
-      console.log("Not found")
-    }
-  }
-
+  const item = document.createElement("li");
+  item.textContent = inputValue;
+  list.append(item);
+  if (list.children.length % 2 === 0) {
+    item.style.backgroundColor = "yellow";
+  } else { item.style.backgroundColor = "blue"; }
+  input.value = "";
 }
 
-const notes = new Notes();
-notes.addNote({
-  text: "abracadabra",
-  priority: Notes.Priority.LOW
-})
-notes.addNote({
-  text: "bob",
-  priority: Notes.Priority.HIGHT
-})
-
-notes.removeNote("bob")
-notes.updatePriority("abracadabra", Notes.Priority.MIDDLE)
-console.log(notes)
-
+function removeItem() {
+  if (list.lastChild) {
+    list.lastElementChild.remove();
+  }
+}
 
 
