@@ -18,7 +18,16 @@ const tweets = [
 //     }
 // })
 
-const statistic = tweets.flatMap(tweet => tweet.tags)
-.reduce((acc, tag) => ({...acc, [tag]: acc[tag] ? acc[tag] + 1 : 1}),{})
+// const statistic = tweets.flatMap(tweet => tweet.tags)
+// .reduce((acc, tag) => ({...acc, [tag]: acc[tag] ? acc[tag] + 1 : 1}),{})
 
-console.log(statistic);
+// console.log(statistic);
+
+// написати функцію яка повертає масив усіх тегів, при цьому не повинно бути
+// повторювань і вони мають бути відсотовані в алфавітному порядку
+
+function getSorted(arr, prop) {
+  return arr.flatMap(tweet => tweet[prop]).filter((tag, index, array) => array.indexOf(tag) === index)
+    .toSorted((elemOne, elemTwo) => elemOne.localeCompare(elemTwo));
+}
+console.log(getSorted(tweets, "tags"));
