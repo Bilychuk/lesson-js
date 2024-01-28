@@ -99,13 +99,24 @@ const buttonAdd = document.createElement("button");
 const buttonRemove = document.createElement("button");
 const input = document.createElement("input");
 
+const localStorageKey = "example-message";
+
+
 buttonAdd.textContent = "Add";
 buttonRemove.textContent = "Remove";
 
 document.body.append(input, buttonAdd, buttonRemove, list);
 
+input.value = localStorage.getItem(localStorageKey) ?? "" ;
+
+
 buttonAdd.addEventListener("click", addItem);
 buttonRemove.addEventListener("click", removeItem);
+input.addEventListener("input", saveMassage);
+
+function saveMassage(event) {
+  localStorage.setItem(localStorageKey, event.target.value);
+}
 
 function addItem() {
   const inputValue = input.value.trim();
@@ -119,6 +130,7 @@ function addItem() {
     item.style.backgroundColor = "yellow";
   } else { item.style.backgroundColor = "blue"; }
   input.value = "";
+  localStorage.removeItem(localStorageKey);
 }
 
 function removeItem() {
@@ -126,5 +138,6 @@ function removeItem() {
     list.lastElementChild.remove();
   }
 }
+
 
 
