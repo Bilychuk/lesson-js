@@ -20,7 +20,6 @@
 //     div.textContent = `Ви вибрали ${product} за ${price}`;
 // });
 
-
 //TODO:==============================================
 /*
 Завдання 8
@@ -41,7 +40,7 @@
 // fatherList.addEventListener("click", (event) => {
 //     if (event.target.nodeName !== "BUTTON") return
 //     const buttonName = event.target.textContent;
-    
+
 //     sumValue += Number(event.target.dataset.number);
 //     if (counter[buttonName]) {
 //         counter[buttonName] ++
@@ -62,7 +61,6 @@
 //     counter = {};
 // })
 
-
 // ЗАДАЧА 1
 
 // Якщо імейл і пароль користувача збігаються, зберігай дані з форми при сабміті
@@ -81,34 +79,55 @@ const USER_DATA = {
   email: "user@mail.com",
   password: "secret",
 };
-const STORAGE_KEY = "login-form"
+const STORAGE_KEY = "login-form";
 const formLogin = document.querySelector(".login-form");
 const buttonLogin = document.querySelector(".login-btn");
 
+const saveData = localStorage.getItem(STORAGE_KEY);
+if (saveData) {
+  const parseData = JSON.parse(saveData);
+  formLogin.email.value = parseData.email || "";
+  formLogin.password.value = parseData.password || "";
+  buttonLogin.textContent = "Logout";
+
+  formLogin.email.setAttribute("readonly", true);
+  formLogin.password.setAttribute("readonly", true);
+}
+
 formLogin.addEventListener("submit", onFormSubmit);
 function onFormSubmit(event) {
-    event.preventDefault();
-    const email = formLogin.elements.email.value.trim();
-    const password = formLogin.elements.password.value.trim();
-    if (!email || !password) {
-       iziToast.warning({
-    title: 'Caution',
-    message: 'Всі поля мають бути заповнені',
-       });
-        return;
-    }
+  event.preventDefault();
+  if (buttonLogin.textContent === "Logout") {
+    localStorage.removeItem(STORAGE_KEY);
+    formLogin.reset();
 
-    if (email !== USER_DATA.email || password !== USER_DATA.password) {
+    buttonLogin.textContent = "Login";
+    formLogin.elements.email.removeAttribute("readonly");
+    formLogin.elements.password.removeAttribute("readonly");
+    return;
+  }
+
+  const email = formLogin.elements.email.value.trim();
+  const password = formLogin.elements.password.value.trim();
+  if (!email || !password) {
     iziToast.warning({
-    title: 'Caution',
-    message: 'Не вірні дані',
+      title: "Caution",
+      message: "Всі поля мають бути заповнені",
     });
-        return;
-    } 
-    const userData = { email, password}
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(userData));
-    buttonLogin.textContent = "Logout";
-    
-    formLogin.elements.email.setAttribute("readonly", true);
-    formLogin.elements.password.setAttribute("readonly", true);
+    return;
+  }
+
+  if (email !== USER_DATA.email || password !== USER_DATA.password) {
+    iziToast.warning({
+      title: "Caution",
+      message: "Не вірні дані",
+    });
+    return;
+  }
+  const userData = { email, password };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(userData));
+  buttonLogin.textContent = "Logout";
+
+  formLogin.elements.email.setAttribute("readonly", true);
+  formLogin.elements.password.setAttribute("readonly", true);
 }
