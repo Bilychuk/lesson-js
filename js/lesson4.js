@@ -36,13 +36,30 @@ const fatherList = document.querySelector(".statList");
 const resultButton = document.querySelector("#resultButton");
 const resultSection = document.querySelector("#resultSection");
 let sumValue = 0;
+let counter = {};
 
 fatherList.addEventListener("click", (event) => {
     if (event.target.nodeName !== "BUTTON") return
+    const buttonName = event.target.textContent;
+    
     sumValue += Number(event.target.dataset.number);
+    if (counter[buttonName]) {
+        counter[buttonName] ++
+    } else {
+        counter[buttonName] = 1;
+    }
 })
 
 resultButton.addEventListener("click", (event) => {
-    resultSection.textContent = `Загальна кількість ${sumValue}`;
+    let markup = `Загальна кількість ${sumValue}<br>`;
+    for (const [key, value] of Object.entries(counter)) {
+        markup += `${key} натиснута ${value} разів<br>`;
+    }
+    resultSection.innerHTML = markup;
+    // resultSection.insertAdjacentHTML("beforeend", markup);
+    // markup = "";
     sumValue = 0;
+    counter = {};
 })
+
+
