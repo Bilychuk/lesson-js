@@ -1,0 +1,16 @@
+#productTable th,
+#productTable td {
+  border: 1px solid rgb(231, 156, 156);
+  padding: 8px;
+}
+
+#productTable th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+#productDetails {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 24px;
+}
